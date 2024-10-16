@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:export_app/otkazmalar_page.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,9 +11,13 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      initialRoute: 'main',
+      routes: {
+        'main' : (context) => const MainPage(),
+        'otkazmalar' : (context) => OtkazmalarPage()
+      },
       debugShowCheckedModeBanner: false,
-      home: MainPage(),
     );
   }
 }
@@ -76,7 +83,7 @@ class HomePage extends StatelessWidget {
       children: [
         Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-          ElevatedButton(onPressed: (){}, child: const Column(children: [
+          ElevatedButton(onPressed: () => Navigator.of(context).pushNamed('otkazmalar'), child: const Column(children: [
             Icon(Icons.autorenew_rounded),
             Text("O'tkazmalar")
           ],)),
